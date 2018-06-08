@@ -97,11 +97,11 @@ public class NoteFormActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Map<String,Object> map) {
             if(map!=null) {
-                if (map.get("message").equals("OK") && map.get("status").equals(true)) {
-                    Toast.makeText(NoteFormActivity.this, map.get("message").toString(), Toast.LENGTH_LONG).show();
+                if (map.get("status").equals(true)) {
+                    Toast.makeText(NoteFormActivity.this, map.get("result").toString(), Toast.LENGTH_LONG).show();
                     limpiarCampos();
                 }else{
-                    Toast.makeText(NoteFormActivity.this, map.get("message").toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(NoteFormActivity.this, map.get("result").toString(), Toast.LENGTH_LONG).show();
                 }
             }else{
                 Toast.makeText(NoteFormActivity.this, "Error al comunicarse con el servicio!!", Toast.LENGTH_LONG).show();

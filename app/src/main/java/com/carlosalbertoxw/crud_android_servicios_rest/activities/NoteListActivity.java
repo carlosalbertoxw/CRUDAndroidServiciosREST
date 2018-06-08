@@ -48,7 +48,7 @@ public class NoteListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Map<String,Object> map) {
             if(map!=null){
-                if(map.get("message").equals("OK")&&map.get("status").equals(true)){
+                if(map.get("status").equals(true)){
                     list = new ObjectMapper().convertValue(map.get("result"), new TypeReference<List<Note>>() {});
                     listView = (ListView) findViewById(R.id.lstNotes);
                     listView.setAdapter(new NoteListAdapter(getApplicationContext(),list));
@@ -64,7 +64,7 @@ public class NoteListActivity extends AppCompatActivity {
                         }
                     });
                 }else{
-                    Toast.makeText(NoteListActivity.this, map.get("message").toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(NoteListActivity.this, map.get("result").toString(), Toast.LENGTH_LONG).show();
                 }
             }else{
                 Toast.makeText(NoteListActivity.this, "Error al comunicarse con el servicio!!", Toast.LENGTH_LONG).show();
